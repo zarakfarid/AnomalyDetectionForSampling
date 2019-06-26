@@ -6,11 +6,11 @@ The Following repository consists of 4 folders, each folder is part of the imple
 
 5 Spring-Boot Applications
 
-Setup 
+# Setup 
 ```
 cd {workspace}/AnomalyDetectionForSampling/Parking Spot Finder Service
 ```
-Running the Individual Services
+## Running the Individual Services
 
 ```
 //For Root-Service: Parking Spot Finder Service
@@ -25,8 +25,9 @@ mvn -pl payment-service -am spring-boot:run
 mvn -pl spot-finder-service -am spring-boot:run
 ```
 
-The Spark Application is integrated with a spring boot aswell to provide a service, so that the user can train and predict using a simple http request. It can be run both way
-For Spring-Boot
+## The Spark Application is integrated with a spring boot app aswell, to provide a service layer, so that the user can train and predict using simple http requests. 
+
+It can be run both way For Spring-Boot
 ```
 clean spring-boot:run
 ```
@@ -36,7 +37,17 @@ mvn clean package
 ```
 and then submit the application with basic spark commands
 
+## The Jaeger Prototype can be run simply running the command. 
 
+```
+cd {workspace}AnomalyDetectionForSampling/Jaeger Prototype Agent
+mvn exec:java
+```
+## Scripts. 
 
+```
+cd {workspace}AnomalyDetectionForSampling/Jaeger Prototype Agent
+mvn exec:java
+```
 
 
