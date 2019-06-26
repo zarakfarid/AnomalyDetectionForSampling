@@ -1,2 +1,2 @@
 # AnomalyDetectionForSampling
-Anomaly Detection for Sampling inDistributed Tracing System
+Anomaly Detection for Sampling in Distributed Tracing System
