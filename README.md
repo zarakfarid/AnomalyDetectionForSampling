@@ -67,7 +67,7 @@ The payload should be something like this
 ```
 ## The Jaeger Prototype 
 
-It can be ran by executing the command. 
+It can be ran by executing the command. (specifiy the log4j2 file with the help of -Dlog4j.configurationFile)
 
 ```
 cd {workspace}AnomalyDetectionForSampling/Jaeger Prototype Agent
@@ -96,8 +96,9 @@ this will start sending requests to Parking Spot Finder services
 
 ### EditJSON Script
 
-This python scripts increase the number of JSON enteries and also insert anamolies in them. It creates a new file with a larger datset and the anomalies specified in the script itself.
+This python scripts increase the number of JSON enteries and also insert anamolies in them. It creates a new file with a larger datset and the anomalies inserted in them, which are specified in the script itself.
 
+For running use
 ```
 python3 editJson.py
 ```
