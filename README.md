@@ -2,20 +2,27 @@
 
 The Following repository consists of 4 folders, each folder is part of the implementation of the thesis "Anomaly Detection For Sampling in Distributed Tracing System"
 
-### Running the code
+### Running The Parking Spot Finder Service
 
-A step by step series of examples that tell you how to get a development env running
+5 Spring-Boot Applications
 
-Say what the step will be
+Setup 
+```
+cd {workspace}/AnomalyDetectionForSampling/Parking Spot Finder Service
+```
+Running the Individual Services
 
 ```
+//For Root-Service: Parking Spot Finder Service
 mvn -pl park-spot-service -am spring-boot:run
-```
-
-And repeat
-
-```
-until finished
+//For Authentication Service
+mvn -pl authentication-service -am spring-boot:run
+//For Verification Service
+mvn -pl verification-service -am spring-boot:run
+//For Payment Service
+mvn -pl payment-service -am spring-boot:run
+//For Spot-Finder Service
+mvn -pl spot-finder-service -am spring-boot:run
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
