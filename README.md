@@ -12,23 +12,23 @@ cd {workspace}/AnomalyDetectionForSampling/Parking Spot Finder Service
 ### Running the Individual Services
 
 ```
-//For Root-Service: Parking Spot Finder Service
+//For Root-Service: Parking Spot Finder Service on port 8080
 mvn -pl park-spot-service -am spring-boot:run
 ```
 ```
-//For Authentication Service
+//For Authentication Service on port 8081
 mvn -pl authentication-service -am spring-boot:run
 ```
 ```
-//For Verification Service
+//For Verification Service on port 8082
 mvn -pl verification-service -am spring-boot:run
 ```
 ```
-//For Payment Service
+//For Payment Service on port 8084
 mvn -pl payment-service -am spring-boot:run
 ```
 ```
-//For Spot-Finder Service
+//For Spot-Finder Service on port 8083
 mvn -pl spot-finder-service -am spring-boot:run
 ```
 
@@ -44,6 +44,27 @@ mvn clean package
 ```
 and then submit the application with basic spark commands
 
+For training the model use 
+```
+http://localhost:8085/train
+```
+For prediction with a json payload use
+```
+http://localhost:8085/predict
+```
+```
+The payload should be something like this
+[
+  {
+    "CreditCard": 6772319276427601,
+    "Position": "-79.75866, -80.33546",
+    "Address": "179-8071 Consectetuer Avenue",
+    "Money": "367,42$",
+    "Username": "Kristina UNION SELECT 1,@@version-- ",
+    "Password": "ANnX4thxArQGNkb3"
+  }
+]
+```
 ## The Jaeger Prototype 
 
 It can be ran by executing the command. 
@@ -77,6 +98,9 @@ this will start sending requests to Parking Spot Finder services
 
 This python scripts increase the number of JSON enteries and also insert anamolies in them. It creates a new file with a larger datset and the anomalies specified in the script itself.
 
+```
+python3 editJson.py
+```
 
 
 
