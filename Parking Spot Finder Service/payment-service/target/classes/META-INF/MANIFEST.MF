@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: payment-service
+Implementation-Version: 1.0
+Built-By: ZarakMac
+Implementation-Vendor-Id: org.tracing
+Build-Jdk: 1.8.0_181
+Implementation-URL: http://maven.apache.org
+Created-By: Maven Integration for Eclipse
+

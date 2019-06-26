@@ -1,0 +1,13 @@
+INFO    2019-04-22 13:21:48,262 [main] org.apache.spark.application.Application  - Some shits
+INFO    2019-04-22 13:25:19,315 [main] org.apache.spark.application.Application  - Some shits
+INFO    2019-04-22 13:26:44,634 [main] org.apache.spark.application.Application  - Some shits
+INFO    2019-04-22 13:31:56,130 [main] org.apache.spark.application.Application  - Some shits
+INFO    2019-04-22 13:34:50,143 [main] org.apache.spark.application.Application  - Some shits
+INFO    2019-04-22 13:36:53,083 [main] org.apache.spark.application.Application  - Some shits
+INFO    2019-04-22 13:37:18,947 [main] org.apache.spark.application.Application  - Some shits
+INFO    2019-04-22 13:39:58,972 [main] org.apache.spark.application.Application  - Some shits
+INFO    2019-04-22 13:41:32,751 [main] org.apache.spark.application.Application  - Some shits
+INFO    2019-04-22 13:44:26,628 [main] org.apache.spark.application.Application  - Some shits
+INFO    2019-04-22 13:50:00,902 [main] org.apache.spark.application.Application  - Some shits
+INFO    2019-04-22 13:56:37,511 [main] org.apache.spark.application.Application  - Some shits
+INFO    2019-04-22 14:04:01,606 [main] org.apache.spark.application.Application  - Some shits
