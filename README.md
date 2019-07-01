@@ -81,6 +81,8 @@ lsof -i -n -P | grep UDP
 ```
 The agent will start listening to UDP packets from port specified in the code, for now "localhost:6831" and will send data to the collector using HTTP requests, URL: http://localhost:14268/api/traces also specified in the code
 
+![](gifs/agent.gif)
+
 ## Scripts. 
 
 There are two scripts one for ingestion and the other for editing the JSON dataset.
