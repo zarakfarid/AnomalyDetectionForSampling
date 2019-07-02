@@ -2,9 +2,24 @@
 
 The Following repository consists of 4 folders, each folder is part of the implementation of the thesis "Anomaly Detection For Sampling in Distributed Tracing System"
 
+## Getting Started
+
+Download and run Elastic Search from `https://www.elastic.co/products/elasticsearch` 
+
+Download Jaeger from `https://www.jaegertracing.io/docs/1.12/getting-started/` and run Jaeger Collector configured with elastic search, using command
+
+```
+./jaeger-collector --span-storage.type elasticsearch
+```
+and run Jaeger Query configured with elastic search
+```
+./jaeger-query --span-storage.type elasticsearch
+```
+If your system is not deployed on localhost, you can specify the hostname and port
+
 ## Parking Spot Finder Services
 
-5 Spring-Boot Applications
+Run these 5 Spring-Boot Applications for the Use-case
 
 ```
 cd {workspace}/AnomalyDetectionForSampling/Parking Spot Finder Service
@@ -31,20 +46,41 @@ mvn -pl payment-service -am spring-boot:run
 //For Spot-Finder Service on port 8083
 mvn -pl spot-finder-service -am spring-boot:run
 ```
+## The Jaeger Prototype 
+
+It can be run by executing the command. (specifiy the log4j2 file with the help of -Dlog4j.configurationFile)
+
+```
+cd {workspace}AnomalyDetectionForSampling/Jaeger Prototype Agent
+```
+```
+mvn exec:java
+```
+for checing out if the prototype is running you can use
+```
+lsof -i -n -P | grep UDP
+```
+The agent will start listening to UDP packets from port specified in the code, for now "localhost:6831" and will send data to the collector using HTTP requests, URL: http://localhost:14268/api/traces also specified in the code.
+
+![](gifs/agent.gif)
+
+There is a variable in org.thrift.agent.server.handler.InMemorySpanServerHandler called **flushEverything**, if this is true all trace data will be forwarded to the collector without the MLFilter, this is used in-order to gather trace data for training the ML Model.
 
 ## The Spark Application
 
-It is integrated with a spring boot app aswell, to provide a service layer, so that the user can train and predict using simple http requests. It can be run both way, for running it as a spring boot application use
+It is integrated with a spring boot app aswell, to provide a service layer, so that the user can train and predict using simple http requests. For running it as a spring boot application use
 ```
 clean spring-boot:run
 ```
-For actuall Spark deployemnt use "spark submit" by first create a Fat-Jar, running the command
+For actuall Spark deployemnt using "spark submit", first comment-out the spring-boot plugin in the pom file and then uncomment the **shade plugin (already present in pom)**. The application was tested with Spark 2.3.2, if there are any dependency conflicts with your spark instance, please use the shade plugin to repackage them, it will solve all the dependency issues. After that create a Fat-Jar by running the command. 
 ```
 mvn clean package
 ```
-and then submit the application with basic spark commands
-
-For training the model use 
+and then submit the application with spark command
+```
+spark-submit  parkingSpot-predictor-0.0.1-SNAPSHOT.jar
+```
+For training the model use (make sure you have some trace data available in elastic-search)
 ```
 http://localhost:8085/train
 ```
@@ -53,7 +89,7 @@ For prediction with a json payload use
 http://localhost:8085/predict
 ```
 ```
-The payload should be something like this
+The payload should be like this
 [
   {
     "CreditCard": 6772319276427601,
@@ -65,23 +101,6 @@ The payload should be something like this
   }
 ]
 ```
-## The Jaeger Prototype 
-
-It can be ran by executing the command. (specifiy the log4j2 file with the help of -Dlog4j.configurationFile)
-
-```
-cd {workspace}AnomalyDetectionForSampling/Jaeger Prototype Agent
-```
-```
-mvn exec:java
-```
-for checing out if the prototype is runnging you can use
-```
-lsof -i -n -P | grep UDP
-```
-The agent will start listening to UDP packets from port specified in the code, for now "localhost:6831" and will send data to the collector using HTTP requests, URL: http://localhost:14268/api/traces also specified in the code
-
-![](gifs/agent.gif)
 
 ## Scripts. 
 
@@ -98,12 +117,9 @@ this will start sending requests to Parking Spot Finder services
 
 ### EditJSON Script
 
-This python scripts increase the number of JSON enteries and also insert anamolies in them. It creates a new file with a larger datset and the anomalies inserted in them, which are specified in the script itself.
+This python scripts increases the number of JSON enteries and also insert anamolies in them. It creates a new file with a larger datset and the anomalies inserted in them. The anomalies are specified in the script itself.
 
 For running use
 ```
 python3 editJson.py
 ```
-
-
-

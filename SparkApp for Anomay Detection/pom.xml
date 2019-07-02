@@ -199,6 +199,67 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <!--<plugin>-->
+                <!--<artifactId>maven-shade-plugin</artifactId>-->
+                <!--<version>3.2.0</version>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<artifactId>maven-shade-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>shade</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<transformers>-->
+                                <!--<transformer>-->
+                                    <!--<resource>META-INF/spring.handlers</resource>-->
+                                <!--</transformer>-->
+                                <!--<transformer>-->
+                                    <!--<resource>META-INF/spring.factories</resource>-->
+                                <!--</transformer>-->
+                                <!--<transformer>-->
+                                    <!--<resource>META-INF/spring.schemas</resource>-->
+                                <!--</transformer>-->
+                                <!--<transformer />-->
+                                <!--<transformer>-->
+                                    <!--<manifestEntries>-->
+                                        <!--<Main-Class>com.parkspot.Application</Main-Class>-->
+                                    <!--</manifestEntries>-->
+                                <!--</transformer>-->
+                            <!--</transformers>-->
+                            <!--<filters>-->
+                                <!--<filter>-->
+                                    <!--<artifact>*:*</artifact>-->
+                                    <!--<excludes>-->
+                                        <!--<exclude>META-INF/maven/**</exclude>-->
+                                        <!--<exclude>META-INF/*.SF</exclude>-->
+                                        <!--<exclude>META-INF/*.DSA</exclude>-->
+                                        <!--<exclude>META-INF/*.RSA</exclude>-->
+                                    <!--</excludes>-->
+                                <!--</filter>-->
+                            <!--</filters>-->
+                            <!--<relocations>-->
+                                <!--<relocation>-->
+                                    <!--<pattern>javax</pattern>-->
+                                    <!--<shadedPattern>repackaged.javax.validation</shadedPattern>-->
+                                    <!--<includes>-->
+                                        <!--<include>javax.validation.**</include>-->
+                                    <!--</includes>-->
+                                <!--</relocation>-->
+                                <!--<relocation>-->
+                                    <!--<pattern>com</pattern>-->
+                                    <!--<shadedPattern>repackaged.com.google</shadedPattern>-->
+                                    <!--<includes>-->
+                                        <!--<include>com.google.**</include>-->
+                                    <!--</includes>-->
+                                <!--</relocation>-->
+                            <!--</relocations>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 
